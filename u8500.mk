@@ -14,7 +14,11 @@ PRODUCT_PACKAGES += \
 # STE Media
 PRODUCT_PACKAGES += \
    libomxil-bellagio \
-   libstelpcutils
+   libstelpcutils \
+   libstagefrighthw \
+   libstagefright_soft_ste_wmapro_v10 \
+   libstagefright_soft_ste_mp3dec \
+   libstagefright_soft_ste_aacdec
 
 # WLAN
 PRODUCT_PACKAGES += \
