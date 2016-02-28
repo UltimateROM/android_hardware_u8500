@@ -26,5 +26,7 @@ PRODUCT_PACKAGES += \
 
 # External
 PRODUCT_PACKAGES += \
-   memtrack.montblanc
+   memtrack.montblanc \
+   whetstone \
+   whetstone_hard
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.montblanc
