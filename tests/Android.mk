@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-COMMON_FLAGS := -DPRINTOUT
+#COMMON_FLAGS := -DPRINTOUT
 
 include $(CLEAR_VARS)
 
