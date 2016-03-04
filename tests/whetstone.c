@@ -82,9 +82,7 @@ void P3(double X, double Y, double *Z);
 double T,T1,T2,E1[5];
 int J,K,L;
 
-int
-main(int argc, char *argv[])
-{
+
 	/* used in the FORTRAN version */
 	long I;
 	long N1, N2, N3, N4, N6, N7, N8, N9, N10, N11;
@@ -98,8 +96,31 @@ main(int argc, char *argv[])
 	float KIPS;
 	int continuous;
 
+static inline __attribute__((optimize("no-lto"))) void trigonometric_test()
+{
+	X = 0.5;
+	Y = 0.5;
+
+	for (I = 1; I <= N7; I++) {
+		X = T * DATAN(T2*DSIN(X)*DCOS(X)/(DCOS(X+Y)+DCOS(X-Y)-1.0));
+		Y = T * DATAN(T2*DSIN(Y)*DCOS(Y)/(DCOS(X+Y)+DCOS(X-Y)-1.0));
+	}
+
+#ifdef PRINTOUT
+	IF (JJ==II)POUT(N7,J,K,X,X,Y,Y);
+#endif
+
+}
+
+
+
+int
+main(int argc, char *argv[])
+{
+
 	loopstart = 1000;		/* see the note about LOOP below */
 	continuous = 0;
+
 
 	II = 1;		/* start at the first arg (temp use of II here) */
 	while (II < argc) {
@@ -262,17 +283,7 @@ C
 C	Module 7: Trigonometric functions
 C
 */
-	X = 0.5;
-	Y = 0.5;
-
-	for (I = 1; I <= N7; I++) {
-		X = T * DATAN(T2*DSIN(X)*DCOS(X)/(DCOS(X+Y)+DCOS(X-Y)-1.0));
-		Y = T * DATAN(T2*DSIN(Y)*DCOS(Y)/(DCOS(X+Y)+DCOS(X-Y)-1.0));
-	}
-
-#ifdef PRINTOUT
-	IF (JJ==II)POUT(N7,J,K,X,X,Y,Y);
-#endif
+	trigonometric_test();
 
 /*
 C
