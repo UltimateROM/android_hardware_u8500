@@ -24,6 +24,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
    iw
 
+
+# STE Compat Symbols
+PRODUCT_PACKAGES += \
+    libcamera_symbols \
+    libicuuc_51
+
+# STE RIL Compat Symbols
+PRODUCT_PACKAGES += \
+    libste_ril
+
+# STE gps Compat Symbols
+PRODUCT_PACKAGES += \
+    libshim_gps
+
+
 # External
 PRODUCT_PACKAGES += \
    memtrack.montblanc \
