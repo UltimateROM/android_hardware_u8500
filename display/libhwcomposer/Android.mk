@@ -27,4 +27,4 @@ LOCAL_SRC_FILES := hwcomposer.c sw_vsync.c
 #vsync_monitor.c
 LOCAL_MODULE := hwcomposer.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_TAGS := optional
-include $(BUILD_SHARED_LIBRARY)
+#include $(BUILD_SHARED_LIBRARY)

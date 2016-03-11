@@ -42,6 +42,6 @@ LOCAL_SRC_FILES := $(filter-out src/shmarea.c, $(LOCAL_SRC_FILES))
 LOCAL_SHARED_LIBRARIES := \
     libdl
 
-include $(BUILD_SHARED_LIBRARY)
+#include $(BUILD_SHARED_LIBRARY)
 
 endif
