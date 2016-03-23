@@ -393,6 +393,10 @@ int cdmaSubscriptionSource = -1;
  */
 int simRuimStatus = -1;
 
+
+// Chrono: to test...
+#if 0
+
 static char * RIL_getRilSocketName() {
     return rild;
 }
@@ -5367,8 +5371,11 @@ rilSocketIdToString(RIL_SOCKET_ID socket_id)
     }
 }
 
+#endif
+
 } /* namespace android */
 
+/*
 void rilEventAddWakeup_helper(struct ril_event *ev) {
     android::rilEventAddWakeup(ev);
 }
@@ -5380,3 +5387,4 @@ void listenCallback_helper(int fd, short flags, void *param) {
 int blockingWrite_helper(int fd, void *buffer, size_t len) {
     return android::blockingWrite(fd, buffer, len);
 }
+*/
