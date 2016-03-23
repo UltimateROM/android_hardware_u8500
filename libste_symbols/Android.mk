@@ -74,7 +74,11 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_HEADER)/librilutils
 LOCAL_C_INCLUDES += external/nanopb-c
 
 
-LOCAL_SRC_FILES := ste_ril.cpp
+LOCAL_SRC_FILES :=   \
+           ste_ril.cpp \
+         ril_event.cpp \
+       RilSocket.cpp \
+       RilSapSocket.cpp 
 LOCAL_MODULE := libste_ril
 LOCAL_COPY_HEADERS_TO := libste_ril
 LOCAL_COPY_HEADERS := ril_ex.h
