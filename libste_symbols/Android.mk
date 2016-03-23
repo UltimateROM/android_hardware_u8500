@@ -45,9 +45,40 @@ include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
 
+LOCAL_SHARED_LIBRARIES := \
+    liblog \
+    libutils \
+    libbinder \
+    libcutils \
+    libhardware_legacy \
+    librilutils \
+
+LOCAL_STATIC_LIBRARIES := \
+    libprotobuf-c-nano-enable_malloc \
+
+ifneq ($(filter xmm6262 xmm6360,$(BOARD_MODEM_TYPE)),)
+LOCAL_CFLAGS := -DMODEM_TYPE_XMM6262
+endif
+ifeq ($(BOARD_MODEM_TYPE),xmm6260)
+LOCAL_CFLAGS := -DMODEM_TYPE_XMM6260
+endif
+ifneq ($(filter m7450 mdm9x35 ss333 xmm7260,$(BOARD_MODEM_TYPE)),)
+LOCAL_CFLAGS := -DSAMSUNG_NEXT_GEN_MODEM
+endif
+
+ifneq ($(filter m7450 xmm7260,$(BOARD_MODEM_TYPE)),)
+LOCAL_CFLAGS += -DNEEDS_VIDEO_CALL_FIELD
+endif
+
+LOCAL_C_INCLUDES += $(TARGET_OUT_HEADER)/librilutils
+LOCAL_C_INCLUDES += external/nanopb-c
+
+
 LOCAL_SRC_FILES := ste_ril.cpp
-LOCAL_SHARED_LIBRARIES := libbinder
 LOCAL_MODULE := libste_ril
+LOCAL_COPY_HEADERS_TO := libste_ril
+LOCAL_COPY_HEADERS := ril_ex.h
+
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
